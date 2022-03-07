@@ -127,7 +127,9 @@ class SingleTextField extends FormBuilderField<String> {
     FormFieldValidator<String>? validator,
     String? initialValue,
     bool readOnly = false,
-    InputDecoration decoration = const InputDecoration(),
+    InputDecoration decoration = const InputDecoration(
+      hintStyle: TextStyle(fontSize: 14, color: Color(0xFFB6B6B9)),
+    ),
     ValueChanged<String?>? onChanged,
     ValueTransformer<String?>? valueTransformer,
     bool enabled = true,
@@ -135,6 +137,7 @@ class SingleTextField extends FormBuilderField<String> {
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
     VoidCallback? onReset,
     FocusNode? focusNode,
+    Widget? icon,
     this.maxLines = 1,
     this.obscureText = false,
     this.textCapitalization = TextCapitalization.none,
@@ -214,7 +217,7 @@ class SingleTextField extends FormBuilderField<String> {
 
             //print(hasFocus);
             // Customized here
-            const dimension = 12.0;
+            const dimension = 8.0;
             return GestureDetector(
               onTap: () {
                 state.effectiveFocusNode?.requestFocus();
@@ -227,6 +230,7 @@ class SingleTextField extends FormBuilderField<String> {
                 title: title ?? '',
                 hasError: hasError,
                 hasFocus: hasFocus,
+                icon: icon,
                 child: TextField(
                   controller: state._effectiveController,
                   focusNode: state.effectiveFocusNode,
@@ -352,10 +356,10 @@ class _SingleTextFieldState
   @override
   void didChange(String? value) {
     super.didChange(value);
-
     if (_effectiveController!.text != value) {
       _effectiveController!.text = value!;
     }
+    validate();
   }
 
   void _handleControllerChanged() {

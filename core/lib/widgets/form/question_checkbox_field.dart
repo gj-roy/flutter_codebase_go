@@ -1,8 +1,8 @@
+import 'package:core/core.dart';
+import 'package:core/styles/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:core/core.dart';
-
 import 'checkbox_items_view.dart';
 import 'textbox_field.dart';
 
@@ -36,6 +36,7 @@ class QuestionCheckBoxField<T> extends FormBuilderField<List<T>> {
   final bool? isRequired;
   final String? textBoxName;
   final bool? isBorder;
+  final bool? isShortAnswer;
 
   /// Creates a list of Checkboxes for selecting multiple options
   QuestionCheckBoxField(
@@ -77,6 +78,7 @@ class QuestionCheckBoxField<T> extends FormBuilderField<List<T>> {
       this.isSubQuestion = false,
       this.isRequired = false,
       this.isBorder = true,
+      this.isShortAnswer = false,
       this.textBoxName})
       : super(
           key: key,
@@ -135,12 +137,13 @@ class QuestionCheckBoxField<T> extends FormBuilderField<List<T>> {
                           .copyWith(color: AppColors.midGrey),
                     ),
                   ),
-                const SizedBox(height: 5),
+                if (questionMsg != null) const SizedBox(height: 5),
                 CheckBoxItemsView<T>(
                   orientation: orientation,
                   value: state.value,
                   options: options,
                   isBorder: isBorder,
+                  isShortAnwser: isShortAnswer,
                   onChanged: (val) {
                     field.didChange(val);
                   },
@@ -193,4 +196,9 @@ class QuestionCheckBoxField<T> extends FormBuilderField<List<T>> {
 }
 
 class _QuestionCheckBoxFieldState<T>
-    extends FormBuilderFieldState<QuestionCheckBoxField<T>, List<T>> {}
+    extends FormBuilderFieldState<QuestionCheckBoxField<T>, List<T>> {
+  @override
+  void didChange(List<T>? val) {
+    super.didChange(val);
+  }
+}

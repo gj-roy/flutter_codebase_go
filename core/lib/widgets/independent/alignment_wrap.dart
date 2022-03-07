@@ -11,7 +11,7 @@ class AlignWrap extends StatelessWidget {
       required this.widgets,
       this.align = Alignment.centerLeft,
       this.spacing = 0,
-      this.runSpacing = AppConsts.kDefaultPadding})
+      this.runSpacing = AppConsts.padding})
       : super(key: key);
 
   @override

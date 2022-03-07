@@ -1,13 +1,13 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import '../../core.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 class Popup {
   static void showError(BuildContext context,
       {String? title, String? message}) {
     Flushbar(
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 5000),
       margin: const EdgeInsets.all(8),
       borderRadius: BorderRadius.circular(8),
       flushbarPosition: FlushbarPosition.TOP,
@@ -30,10 +30,10 @@ class Popup {
   static void showSuccess(BuildContext context,
       {String? title, String? message}) {
     Flushbar(
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 2000),
       margin: const EdgeInsets.all(8),
       borderRadius: BorderRadius.circular(8),
-      flushbarPosition: FlushbarPosition.TOP,
+      flushbarPosition: FlushbarPosition.BOTTOM,
       messageText: Text(
         message ?? '',
         style: CoreAppTheme.of(context).textTheme.bodyText2?.copyWith(
@@ -47,13 +47,36 @@ class Popup {
           blurRadius: 3.0,
         )
       ],
-    ).show(context);
+    ).show(context).then((value) => null);
+  }
+
+  static void showSuccessCallBack(BuildContext context,
+      {String? title, String? message, VoidCallback? callback}) {
+    Flushbar(
+      duration: const Duration(milliseconds: 1500),
+      margin: const EdgeInsets.all(8),
+      borderRadius: BorderRadius.circular(8),
+      flushbarPosition: FlushbarPosition.BOTTOM,
+      messageText: Text(
+        message ?? '',
+        style: CoreAppTheme.of(context).textTheme.bodyText2?.copyWith(
+            fontWeight: FontWeight.normal, color: AppColors.successText),
+      ),
+      backgroundColor: AppColors.successBg,
+      boxShadows: [
+        BoxShadow(
+          color: AppColors.successBg.withAlpha(100),
+          offset: const Offset(0.0, 2.0),
+          blurRadius: 3.0,
+        )
+      ],
+    ).show(context).then((value) => callback?.call());
   }
 
   static void showInformation(BuildContext context,
       {String? title, String? message}) {
     Flushbar(
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 2000),
       margin: const EdgeInsets.all(8),
       borderRadius: BorderRadius.circular(8),
       flushbarPosition: FlushbarPosition.TOP,

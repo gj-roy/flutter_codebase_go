@@ -16,7 +16,7 @@ class CoreAppTheme {
         accentColor: AppColors.accent,
         primarySwatch: AppColors.primarySwatch,
         primaryColorDark: AppColors.primary,
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColors.white,
         errorColor: AppColors.red,
         brightness: Brightness.light);
     return ThemeData(
@@ -37,6 +37,7 @@ class CoreAppTheme {
       fontFamily: AppConsts.defaultFont,
       disabledColor: AppColors.neutral40,
       unselectedWidgetColor: AppColors.neutral40,
+      scaffoldBackgroundColor: AppColors.white,
       indicatorColor: AppColors.neutral40,
       colorScheme: colorSceme,
       bottomAppBarColor: AppColors.lightGray,
@@ -52,40 +53,46 @@ class CoreAppTheme {
                   fontFamily: AppConsts.defaultFont,
                   fontWeight: FontWeight.w400))),
       textTheme: const TextTheme(
-        subtitle1: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          fontFamily: AppConsts.defaultFont,
-        ),
-        subtitle2: TextStyle(
-            fontSize: 14,
-            color: AppColors.kTextColor,
-            fontWeight: FontWeight.normal,
-            fontFamily: AppConsts.defaultFont),
-        bodyText1: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.normal,
-            fontFamily: AppConsts.defaultFont,
-            color: AppColors.black),
-        bodyText2: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            fontFamily: AppConsts.defaultFont,
-            color: AppColors.black),
-        headline1: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: AppColors.kTextColor),
-        headline2: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: AppColors.kTextColor),
-        headline3: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primary),
-      ).apply(
-          fontFamily: AppConsts.defaultFont, bodyColor: AppColors.kTextColor),
+              subtitle1: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                fontFamily: AppConsts.defaultFont,
+              ),
+              subtitle2: TextStyle(
+                  fontSize: 14,
+                  color: AppColors.kTextColor,
+                  fontWeight: FontWeight.normal,
+                  fontFamily: AppConsts.defaultFont),
+              bodyText1: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.normal,
+                  fontFamily: AppConsts.defaultFont,
+                  color: AppColors.black),
+              bodyText2: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppConsts.defaultFont,
+                  color: AppColors.black),
+              headline1: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.kTextColor),
+              headline2: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.kTextColor),
+              headline3: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primary,
+              ),
+              headline4: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.kTextColor))
+          .apply(
+              fontFamily: AppConsts.defaultFont,
+              bodyColor: AppColors.kTextColor),
       buttonTheme: theme.buttonTheme.copyWith(
         minWidth: 50,
         buttonColor: AppColors.red,

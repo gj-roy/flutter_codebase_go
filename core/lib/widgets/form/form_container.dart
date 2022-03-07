@@ -20,7 +20,7 @@ class FormContainer extends StatelessWidget {
       this.hasFocus = false,
       this.hasError = false,
       this.isRequired = true,
-      this.borderRadius = 12,
+      this.borderRadius = 16,
       this.title = '',
       this.errorText})
       : super(key: key);
@@ -35,7 +35,7 @@ class FormContainer extends StatelessWidget {
                     ? AppColors.primary
                     : hasError
                         ? AppColors.red
-                        : AppColors.borderColor),
+                        : AppColors.neutral400),
                 width: 1.0),
             borderRadius: BorderRadius.circular(borderRadius),
             color: enabled ? Colors.white : AppColors.black.withAlpha(7)),
@@ -92,7 +92,7 @@ class FormHandlerContainer extends StatelessWidget {
                             Text(
                               title,
                               style: const TextStyle(
-                                color: AppColors.midGrey,
+                                color: AppColors.neutral200,
                                 fontSize: AppSizes.textTitleSize,
                                 fontWeight: FontWeight.normal,
                               ),

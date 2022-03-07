@@ -1,75 +1,47 @@
 class DeeplinkConstant {
   static const loginPage = 'login';
+  static const signUpScreen = 'signup_screen';
   static const otp = 'otp';
-  static const infoProfileScreen = 'info_profile';
-  static const healthyProfileScreen = 'healthy_profile';
-  static const filterProfileScreen = 'filter_profile';
-  static const otherServiceScreen = 'other_services';
-  static const paymentPackageScreen = 'payment_package';
-  static const orderListPage = 'order_list';
-  static const homeScreen = 'home_screen';
-  static const productScreen = 'product_screen';
-  static const productDetailScreen = 'product_detail_screen';
-  static const detailScreen = 'product_detail_screen';
-  static const userInformation = 'userInformation';
-  static const patientPackagesScreen = 'patient_packages_screen';
-  static const detailPackagesScreen = 'detail_packages_screen';
-  static const orderSuccessfulScreen = 'order_successfull_screen';
-  static const registerPatientsScreen = 'register_patients_screen';
-  static const checkoutMethodsScreen = 'checkout_methods_screen';
-  // patient
-  static const patientDetailScreen = 'patient_detail_screen';
-  static const patientMedicine = 'patient_medicine_screen';
-  static const patientHealthInformation = 'patient_health_information_screen';
-  static const patientHealthUpdate = 'patient_health_update_screen';
-  static const patientCall = 'patient_call_screen';
-  static const patientDoctorSchedule = 'patient_doctor_schedule_screen';
-  static const takeAvatar = 'take_avatar';
-  static const uploadDocument = 'uploadDocument';
-  static const detailUploadDocument = 'detailUploadDocument';
-  static const waitAssignment = 'wait_assignment_screen';
-  static const doctorDetail = 'doctor_detail_screen';
-  static const deleteImage = 'deleteImage';
-
-  // payment
-  static const paymentDetailScreen = 'payment_detail_screen';
-  static const paymentMethodScreen = 'payment_method_screen';
-  static const paymentSucessScreen = 'payment_success_screen';
-  static const paymentFailureScreen = 'payment_failure_screen';
-
-  // Test result
-  static const testResult = 'test_result';
-  static const searchTestResult = 'search_test_result';
-  static const detailTestResult = 'detail_test_result';
-
+  static const homeScreen = 'home';
+  static const forgotPass = 'forgot_pass_screen';
+  static const patientsScreen = 'patients_screen';
+  static const addInstructionScreen = 'add_instruction_screen';
+  static const hospitalsScreen = 'hospital_screen';
+  static const spo2GuidelineScreen = 'spo2_guideline_screen';
+  static const breathGuidelineScreen = 'breath_guideline_screen';
+  //Add patients
+  static const addPatients = 'add_patients_screen';
+  static const analytisHealthyScreen = 'analytis_healthy_screen';
+  static const riskAnalytisScreen = 'risk_analytis_screen';
+  static const createPatientCompleteScreen = 'create_patient_complete_screen';
+  static const qrCameraScreen = 'qr_camera_screen';
+  //Account
+  static const feedbackScreen = 'feedback_screen';
+  static const aboutUsScreen = 'about_screen';
+  static const languageScreen = 'language_screen';
+  static const policyScreen = 'policy_screen';
+  static const editUserInfoScreen = 'edit_user_info_screen';
   //Notification
-  static const notification = 'notification';
-  static const notificationDetail = 'notificationDetail';
-  static const faqDetail = 'faq_detail';
-  static const faq = 'faq_screen';
-  static const newsDetail = 'news_detail';
-  static const newsCategory = 'news_category';
-  // Login, SignUp
-  static const signUpAccount = 'sign_up_account';
+  static const notificationScreen = 'notification_screen';
+  // Detail Patients
+  static const informationScreen = 'information_screen';
+  static const processInforScreen = 'process_screen';
+  static const instructionInforScreen = 'instruction_screen';
+  static const evaluationInfoScreen = 'evaluation_screen';
+  static const editEvaluationInfoScreen = 'edit_evaluation_screen';
+  static const createProfileMedicalScreen = 'create_profile_medical_screen';
+  static const addDailyEvaluationScreen = 'add_daily_evaluation_screen';
+  static const detailDailyEvaluationScreen = 'detail_daily_evaluation_screen';
+  static const addDailyEvaluationCompleteScreens =
+      'add_daily_evaluation_complete_screen';
+}
 
-  // Member Management
-  static const membersManagement = 'membersManagement';
-
-  // Contact
-  static const contact = 'contact';
-
-  // Settings
-  static const detailPatientInformation = 'detail_patient_information';
-  static const updatePatientInformation = 'update_patient_information';
-  static const updateKYC = 'update_KYC';
-
-  //Payment history
-  static const paymentHistory = 'payment_history_screen';
-  static const paymentHistoryDetail = 'payment_history_detail_screen';
-
-  // Kyc
-  static const kycAddDocument = 'kyc_add_document';
-  static const kycCamera = 'kyc_camera';
-  static const kycSelFie = 'kyc_selfie';
-  static const kycConfirmInfo = 'kyc_confirm_info';
+class PatientsFilterType {
+  static const kNotDailyEvaluation = 'not_daily_evaluation';
+  static const kNotMedicalInstruction = 'not_medical_instruction';
+  static const kNeedTransfer = 'need_transfer_hospital';
+  static const kF0Level1 = 'F0Level1';
+  static const kF0Level2 = 'F0Level2';
+  static const kF0Level3 = 'F0Level3';
+  static const kF0Level4 = 'F0Level4';
 }

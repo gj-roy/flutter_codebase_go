@@ -21,45 +21,71 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addP": MessageLookupByLibrary.simpleMessage("Thêm BN"),
+        "addPatient":
+            MessageLookupByLibrary.simpleMessage("Thêm bệnh nhân mới"),
         "call": MessageLookupByLibrary.simpleMessage("Gọi ngay"),
+        "callServiceError": MessageLookupByLibrary.simpleMessage(
+            "Call service not connected, please try again"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "cannotInitilizeApp":
             MessageLookupByLibrary.simpleMessage("Không thể khởi tạo ứng dụng"),
         "change_language_title":
             MessageLookupByLibrary.simpleMessage("Đổi ngôn ngữ của bạn"),
+        "document": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "email_hint":
             MessageLookupByLibrary.simpleMessage("Nhập email của bạn"),
         "email_validate":
             MessageLookupByLibrary.simpleMessage("Emai không hợp lệ"),
+        "enterPatientInfomation":
+            MessageLookupByLibrary.simpleMessage("Nhập thông tin bệnh nhân"),
         "errorOccur": MessageLookupByLibrary.simpleMessage("Đã xảy ra lỗi...!"),
-        "family": MessageLookupByLibrary.simpleMessage("Người thân"),
         "fieldNotEmpty":
             MessageLookupByLibrary.simpleMessage("Không được bỏ trống."),
-        "findByName": MessageLookupByLibrary.simpleMessage("Find by name..."),
+        "findByName": MessageLookupByLibrary.simpleMessage("Tìm theo tên..."),
+        "friday": MessageLookupByLibrary.simpleMessage("Thứ 6"),
+        "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "home_screen_title": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "loadFailed": MessageLookupByLibrary.simpleMessage("Đã xảy ra lỗi!"),
+        "loadMore": MessageLookupByLibrary.simpleMessage("Đang tải..."),
+        "monday": MessageLookupByLibrary.simpleMessage("Thứ 2"),
         "name_hint": MessageLookupByLibrary.simpleMessage("Nhập tên của bạn"),
         "name_validate":
             MessageLookupByLibrary.simpleMessage("Tên không hợp lệ"),
         "needSupport": MessageLookupByLibrary.simpleMessage("Bạn cần hỗ trợ?"),
         "noInternet":
             MessageLookupByLibrary.simpleMessage("Không có kết nối mạng."),
+        "noMoreData": MessageLookupByLibrary.simpleMessage("Đã tải xuống hết!"),
+        "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "password_hint": MessageLookupByLibrary.simpleMessage("Nhập mật khẩu"),
         "password_validate": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải có chữ viết hoa, chữ thường, số và ký tự đặc biệt"),
+        "permissionError": MessageLookupByLibrary.simpleMessage(
+            "Xin vui lòng cấp quyền truy cập cho ứng dụng"),
         "phone_hint":
             MessageLookupByLibrary.simpleMessage("Nhập số điện thoại của bạn"),
         "phone_validate":
             MessageLookupByLibrary.simpleMessage("Số điện thoại phải có 11 số"),
         "plsCall": MessageLookupByLibrary.simpleMessage("Vui lòng gọi số "),
         "plsTryAgain": MessageLookupByLibrary.simpleMessage("Vui lòng thử lại"),
-        "profile": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
+        "profile": MessageLookupByLibrary.simpleMessage("Tài khoản"),
+        "qrCodeMenuItem":
+            MessageLookupByLibrary.simpleMessage("Quét mã QR của bệnh nhân"),
+        "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
         "submit_btn": MessageLookupByLibrary.simpleMessage("Kiểm tra"),
-        "support": MessageLookupByLibrary.simpleMessage("Hỗ trợ"),
+        "sunday": MessageLookupByLibrary.simpleMessage("Chủ nhật"),
+        "thurday": MessageLookupByLibrary.simpleMessage("Thứ 5"),
+        "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
+        "tomorrow": MessageLookupByLibrary.simpleMessage("Ngày mai"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Thử lại"),
+        "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
         "validBirthday": MessageLookupByLibrary.simpleMessage(
-            "Vui lòng nhập ngày sinh hợp lệ"),
+            "Vui lòng nhập ngày tháng hợp lệ"),
         "validMobile": MessageLookupByLibrary.simpleMessage(
-            "Vui lòng nhập số điện thoại di động hợp lệ")
+            "Vui lòng nhập số điện thoại di động hợp lệ"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("Thứ 4"),
+        "yearInvalid":
+            MessageLookupByLibrary.simpleMessage("Năm sinh không hợp lệ")
       };
 }

@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:core/di/di_components.dart';
-import 'package:core/core.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-
 import '/helper/debug.dart';
 import 'deeplink_constant.dart';
 
-class NavigationService {
+class NavigationService extends NavigatorObserver {
+  Route<dynamic>? previousRoute;
+  Route<dynamic>? currentRoute;
+
+  List<Route<dynamic>> routesStack = [];
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   Future<dynamic> navigateTo(String routeName, {Object? arguments}) async {
     if (navigatorKey.currentState != null) {
-      debug('Navigating to $routeName');
-      await getIt
-          .get<FirebaseAnalyticsHandler>()
-          .trackScreen(screenName: routeName);
       return navigatorKey.currentState!
           .pushNamed(routeName, arguments: arguments);
     } else {
@@ -23,10 +19,10 @@ class NavigationService {
   }
 
   // back to last page.
-  void goback() {
+  void goback({Object? object}) {
     var state = navigatorKey.currentState;
     if (state != null && state.canPop()) {
-      return state.pop();
+      return state.pop(object);
     }
   }
 
@@ -38,14 +34,6 @@ class NavigationService {
       arguments = deeplink.substring(deeplink.indexOf('?'), deeplink.length);
     }
     return navigateTo(deeplinkWithoutParams, arguments: arguments);
-  }
-
-  void replaceHomeScreen() {
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
-    navigatorKey.currentState!
-        .pushReplacementNamed(DeeplinkConstant.homeScreen);
-    var controller = getIt.get<PersistentTabController>();
-    controller.jumpToTab(0);
   }
 
   Future<void> goToLoginScreen({bool isModal = false}) {
@@ -74,7 +62,49 @@ class NavigationService {
   void popToRootBeforeLogin() {
     navigatorKey.currentState?.popUntil((route) =>
         route.settings.name == DeeplinkConstant.loginPage ||
+        route.settings.name == DeeplinkConstant.signUpScreen ||
         route.settings.name == '/');
+
     goback();
+  }
+
+  void popToBefore(String deeplink,
+      {Object? object, String defaultRoot = '/'}) {
+    navigatorKey.currentState?.popUntil((route) =>
+        route.settings.name == deeplink || route.settings.name == defaultRoot);
+    goback(object: object);
+  }
+
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    debug('${route.settings.name} pushed');
+    this.previousRoute = previousRoute;
+    currentRoute = route;
+    routesStack.add(route);
+  }
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    debug('${route.settings.name} popped');
+    debug('previous ${previousRoute?.settings.name}');
+    routesStack.remove(route);
+  }
+
+  @override
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
+    debug(
+        '${oldRoute?.settings.name} is replaced by ${newRoute?.settings.name}');
+    routesStack.remove(oldRoute);
+    if (newRoute != null) {
+      routesStack.add(newRoute);
+    }
+  }
+
+  @override
+  void didRemove(Route<dynamic>? route, Route<dynamic>? previousRoute) {
+    debug('${route?.settings.name} removed');
+    if (route != null) {
+      routesStack.remove(route);
+    }
   }
 }

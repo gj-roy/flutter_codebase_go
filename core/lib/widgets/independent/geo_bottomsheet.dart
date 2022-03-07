@@ -1,9 +1,9 @@
 import 'package:diacritic/diacritic.dart';
+import 'package:core/l10n/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:core/generated_images.dart';
-import 'package:core/l10n/generated/l10n.dart';
 import 'package:core/styles/styles.dart';
 import 'package:sizer/sizer.dart';
 import 'seperator.dart';
@@ -116,7 +116,7 @@ class _GeoBottomSheetState extends State<GeoBottomSheet> {
                 if (widget.showSearchBox)
                   Container(
                       margin: const EdgeInsets.symmetric(
-                          horizontal: AppConsts.kDefaultPadding),
+                          horizontal: AppConsts.padding),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11),
                           border: Border.all(color: AppColors.borderColor)),
@@ -143,7 +143,7 @@ class _GeoBottomSheetState extends State<GeoBottomSheet> {
                       )),
                 if (widget.showSearchBox)
                   const SizedBox(
-                    height: AppConsts.kDefaultPadding / 2,
+                    height: AppConsts.padding / 2,
                   ),
                 Expanded(
                     flex: 1,
@@ -168,8 +168,8 @@ class _GeoBottomSheetState extends State<GeoBottomSheet> {
                     ? widget.builder!(e)
                     : Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: AppConsts.kDefaultPadding,
-                            vertical: AppConsts.kDefaultPadding / 2),
+                            horizontal: AppConsts.padding,
+                            vertical: AppConsts.padding / 2),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +183,7 @@ class _GeoBottomSheetState extends State<GeoBottomSheet> {
                               ),
                             ),
                             const SizedBox(
-                              height: AppConsts.kDefaultPadding,
+                              height: AppConsts.padding,
                             ),
                             const Seperator()
                           ],

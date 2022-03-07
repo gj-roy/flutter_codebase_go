@@ -11,6 +11,7 @@ class GeoDropdown<T> extends StatefulWidget {
   final bool isRequired;
   final bool showSearchBar;
   final String dropdownTitle;
+  final String? placeholder;
   final ValueSetter<T>? onSelected;
   final GlobalKey<FormBuilderState>? formKey;
   const GeoDropdown(
@@ -22,6 +23,7 @@ class GeoDropdown<T> extends StatefulWidget {
       required this.items,
       this.isRequired = true,
       this.showSearchBar = true,
+      this.placeholder,
       this.onSelected,
       this.formKey})
       : super(key: key);
@@ -39,6 +41,14 @@ class _GeoDropdownState<T> extends State<GeoDropdown<T>> {
             initialValue: widget.initialValue,
             title: widget.label,
             name: widget.name,
+            isRequired: widget.isRequired,
+            hint: widget.placeholder != null
+                ? Text(
+                    widget.placeholder!,
+                    style:
+                        const TextStyle(fontSize: 14, color: Color(0xFFB6B6B9)),
+                  )
+                : null,
             items: widget.items
                 .map((e) => DropdownMenuItem(
                       value: e.value,

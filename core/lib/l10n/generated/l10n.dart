@@ -180,10 +180,10 @@ class S {
     );
   }
 
-  /// `Find by name...`
+  /// `Tìm theo tên...`
   String get findByName {
     return Intl.message(
-      'Find by name...',
+      'Tìm theo tên...',
       name: 'findByName',
       desc: '',
       args: [],
@@ -280,10 +280,10 @@ class S {
     );
   }
 
-  /// `Vui lòng nhập ngày sinh hợp lệ`
+  /// `Vui lòng nhập ngày tháng hợp lệ`
   String get validBirthday {
     return Intl.message(
-      'Vui lòng nhập ngày sinh hợp lệ',
+      'Vui lòng nhập ngày tháng hợp lệ',
       name: 'validBirthday',
       desc: '',
       args: [],
@@ -300,31 +300,231 @@ class S {
     );
   }
 
-  /// `Người thân`
-  String get family {
-    return Intl.message(
-      'Người thân',
-      name: 'family',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Hỗ trợ`
-  String get support {
-    return Intl.message(
-      'Hỗ trợ',
-      name: 'support',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Hồ sơ`
-  String get profile {
+  String get document {
     return Intl.message(
       'Hồ sơ',
+      name: 'document',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thông báo`
+  String get notification {
+    return Intl.message(
+      'Thông báo',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nhóm`
+  String get group {
+    return Intl.message(
+      'Nhóm',
+      name: 'group',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thêm bệnh nhân mới`
+  String get addPatient {
+    return Intl.message(
+      'Thêm bệnh nhân mới',
+      name: 'addPatient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thêm BN`
+  String get addP {
+    return Intl.message(
+      'Thêm BN',
+      name: 'addP',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tài khoản`
+  String get profile {
+    return Intl.message(
+      'Tài khoản',
       name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call service not connected, please try again`
+  String get callServiceError {
+    return Intl.message(
+      'Call service not connected, please try again',
+      name: 'callServiceError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xin vui lòng cấp quyền truy cập cho ứng dụng`
+  String get permissionError {
+    return Intl.message(
+      'Xin vui lòng cấp quyền truy cập cho ứng dụng',
+      name: 'permissionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hôm nay`
+  String get today {
+    return Intl.message(
+      'Hôm nay',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ngày mai`
+  String get tomorrow {
+    return Intl.message(
+      'Ngày mai',
+      name: 'tomorrow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thứ 2`
+  String get monday {
+    return Intl.message(
+      'Thứ 2',
+      name: 'monday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thứ 3`
+  String get tuesday {
+    return Intl.message(
+      'Thứ 3',
+      name: 'tuesday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thứ 4`
+  String get wednesday {
+    return Intl.message(
+      'Thứ 4',
+      name: 'wednesday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thứ 5`
+  String get thurday {
+    return Intl.message(
+      'Thứ 5',
+      name: 'thurday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thứ 6`
+  String get friday {
+    return Intl.message(
+      'Thứ 6',
+      name: 'friday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thứ 7`
+  String get saturday {
+    return Intl.message(
+      'Thứ 7',
+      name: 'saturday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chủ nhật`
+  String get sunday {
+    return Intl.message(
+      'Chủ nhật',
+      name: 'sunday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quét mã QR của bệnh nhân`
+  String get qrCodeMenuItem {
+    return Intl.message(
+      'Quét mã QR của bệnh nhân',
+      name: 'qrCodeMenuItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nhập thông tin bệnh nhân`
+  String get enterPatientInfomation {
+    return Intl.message(
+      'Nhập thông tin bệnh nhân',
+      name: 'enterPatientInfomation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đã xảy ra lỗi!`
+  String get loadFailed {
+    return Intl.message(
+      'Đã xảy ra lỗi!',
+      name: 'loadFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đang tải...`
+  String get loadMore {
+    return Intl.message(
+      'Đang tải...',
+      name: 'loadMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đã tải xuống hết!`
+  String get noMoreData {
+    return Intl.message(
+      'Đã tải xuống hết!',
+      name: 'noMoreData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Năm sinh không hợp lệ`
+  String get yearInvalid {
+    return Intl.message(
+      'Năm sinh không hợp lệ',
+      name: 'yearInvalid',
       desc: '',
       args: [],
     );

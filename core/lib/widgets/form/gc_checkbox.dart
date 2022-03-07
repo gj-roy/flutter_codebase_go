@@ -44,7 +44,7 @@ class _GCCheckBoxState<T> extends State<GCCheckBox>
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.primary, width: 2),
         color: AppColors.primary,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(4),
       ),
       child: SizedBox(
         height: 8,
@@ -63,7 +63,7 @@ class _GCCheckBoxState<T> extends State<GCCheckBox>
       alignment: Alignment.center,
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.midGrey, width: 2),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(4),
       ),
     );
   }

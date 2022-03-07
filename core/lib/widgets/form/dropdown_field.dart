@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:core/generated_images.dart';
 import 'package:core/core.dart';
 
+import 'form_container.dart';
+
 /// Field for Dropdown button
 class DropdownField<T> extends FormBuilderField<T> {
   /// The list of items the user can select.
@@ -264,7 +266,7 @@ class DropdownField<T> extends FormBuilderField<T> {
             var hasFocus = state.effectiveFocusNode?.hasFocus ?? false;
             var hasError = state.hasError && (isRequired ?? false);
             return FormContainer(
-              borderRadius: 12,
+              borderRadius: 8,
               isRequired: isRequired ?? false,
               errorText: state.errorText,
               title: title ?? '',

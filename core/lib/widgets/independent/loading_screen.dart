@@ -4,12 +4,17 @@ import 'package:sizer/sizer.dart';
 
 class Loading extends StatelessWidget {
   final double? height;
-  const Loading({Key? key, this.height}) : super(key: key);
+  final double? width;
+  const Loading({
+    Key? key,
+    this.height,
+    this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 100.w,
+        width: width ?? 100.w,
         height: height ?? 100.h,
         child: const Center(
           child: CircularProgressIndicator(color: AppColors.primary),

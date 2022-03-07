@@ -208,37 +208,39 @@ class TextboxField extends FormBuilderField<String> {
             final state = field as _TextboxFieldState;
             // Customized here
             return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: AppConsts.kMarginAll,
               decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.borderColor, width: 1.0),
+                  border: Border.all(color: AppColors.neutral400, width: 1.0),
                   borderRadius: BorderRadius.circular(12)),
               child: Column(children: [
-                Container(
-                  padding: const EdgeInsets.all(0),
-                  alignment: Alignment.topLeft,
-                  child: Row(
-                    children: [
-                      Text(
-                        title ?? '',
-                        style: const TextStyle(
-                          color: AppColors.midGrey,
-                          fontSize: AppSizes.textTitleSize,
-                          fontWeight: FontWeight.normal,
+                title != null
+                    ? Container(
+                        padding: const EdgeInsets.all(0),
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: [
+                            Text(
+                              title,
+                              style: const TextStyle(
+                                color: AppColors.midGrey,
+                                fontSize: AppSizes.textTitleSize,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            if (isRequired == true)
+                              const Text(
+                                ' *',
+                                style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: AppSizes.textTitleSize),
+                              )
+                            else
+                              const Text('')
+                          ],
                         ),
-                        textAlign: TextAlign.left,
-                      ),
-                      if (isRequired == true)
-                        const Text(
-                          ' *',
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: AppSizes.textTitleSize),
-                        )
-                      else
-                        const Text('')
-                    ],
-                  ),
-                ),
+                      )
+                    : Container(),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
@@ -254,15 +256,18 @@ class TextboxField extends FormBuilderField<String> {
                           enabledBorder: InputBorder.none,
                           errorBorder: InputBorder.none,
                           hintText: placeholder ?? '',
-                          hintStyle: const TextStyle(
-                              color: AppColors.midGrey,
-                              fontSize: AppSizes.textFieldSize),
+                          hintStyle:
+                              style?.copyWith(color: AppColors.midGrey) ??
+                                  const TextStyle(
+                                      color: AppColors.midGrey,
+                                      fontSize: AppSizes.textFieldSize),
                           fillColor: Colors.red),
                       keyboardType: TextInputType.multiline,
                       textInputAction: textInputAction,
-                      style: const TextStyle(
-                          fontSize: AppSizes.textFieldSize,
-                          fontWeight: FontWeight.normal),
+                      style: style ??
+                          const TextStyle(
+                              fontSize: AppSizes.textFieldSize,
+                              fontWeight: FontWeight.normal),
                       strutStyle: strutStyle,
                       textAlign: textAlign,
                       textAlignVertical: textAlignVertical,

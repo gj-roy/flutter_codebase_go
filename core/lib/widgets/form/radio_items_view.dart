@@ -159,9 +159,6 @@ class _RadioItemsViewState<T> extends State<RadioItemsView<T?>> {
     return Container(
       padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
       width: (size.width - 40 + 10) / 2,
-      decoration: BoxDecoration(
-          border: Border.all(color: AppColors.borderControl, width: 1),
-          borderRadius: BorderRadius.circular(10)),
       child: Row(
         children: [
           if (widget.controlAffinity == ControlAffinity.leading) checkcontrol,

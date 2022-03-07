@@ -28,6 +28,7 @@ class SingleChoiceItemsView<T> extends StatefulWidget {
   final VerticalDirection wrapVerticalDirection;
 
   final ControlAffinity controlAffinity;
+  final bool? isBorder;
 
   const SingleChoiceItemsView({
     Key? key,
@@ -49,6 +50,7 @@ class SingleChoiceItemsView<T> extends StatefulWidget {
     this.wrapTextDirection,
     this.wrapVerticalDirection = VerticalDirection.down,
     this.controlAffinity = ControlAffinity.leading,
+    this.isBorder = true,
   }) : super(key: key);
   @override
   _SingleChoiceItemsViewState<T> createState() =>
@@ -160,9 +162,11 @@ class _SingleChoiceItemsViewState<T> extends State<SingleChoiceItemsView<T?>> {
     return Container(
       padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
       width: size.width,
-      decoration: BoxDecoration(
-          border: Border.all(color: AppColors.borderControl, width: 1),
-          borderRadius: BorderRadius.circular(10)),
+      decoration: widget.isBorder == true
+          ? BoxDecoration(
+              border: Border.all(color: AppColors.borderControl, width: 1),
+              borderRadius: BorderRadius.circular(10))
+          : null,
       child: Row(
         children: [
           if (widget.controlAffinity == ControlAffinity.leading) checkcontrol,

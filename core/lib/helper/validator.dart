@@ -1,10 +1,11 @@
 import 'dart:math';
 
+import 'package:core/helper/tiengviet/tiengviet.dart';
 import 'package:diacritic/diacritic.dart';
+import 'package:core/l10n/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:core/l10n/generated/l10n.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -54,13 +55,21 @@ class Validator {
         errorText: errorText ?? S.of(context).fieldNotEmpty);
   }
 
-  static FormFieldValidator<String> emailFormat<T>(
-    BuildContext context, {
-    String? errorText,
-  }) {
+  static FormFieldValidator<String> validateBirthYear<T>(BuildContext context,
+      {String? errorText}) {
+    var now = DateTime.now();
+    return FormBuilderValidators.compose([
+      FormBuilderValidators.min(context, 1900,
+          errorText: S.current.yearInvalid + '. Chỉ từ năm 1900 tới nay'),
+      FormBuilderValidators.max(context, now.year,
+          errorText: S.current.yearInvalid + '. Chỉ từ năm 1900 tới nay')
+    ]);
+  }
+
+  static FormFieldValidator<String> emailFormat<T>(BuildContext context,
+      {String? errorText}) {
     return FormBuilderValidators.email(context,
-        errorText:
-            errorText ?? 'Not a valid email address. Should be your@email.com');
+        errorText: errorText ?? 'Email không hợp lệ. VD: yourmail@gmail.com');
   }
 
   static FormFieldValidator<String> dateString<T>(
@@ -71,11 +80,11 @@ class Validator {
         errorText: errorText ?? '');
   }
 
-  static String? validateBirthday(String? value) {
+  static String? validateBirthday(String? value, {bool canEmpty = false}) {
     if (value == null || value.isEmpty) {
-      return S.current.fieldNotEmpty;
+      return canEmpty ? null : S.current.fieldNotEmpty;
     } else if (value == '--/--/----') {
-      return S.current.fieldNotEmpty;
+      return canEmpty ? null : S.current.fieldNotEmpty;
     } else if (value.contains('-')) {
       return S.current.validBirthday;
     } else {
@@ -95,7 +104,7 @@ class Validator {
     var pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
     var regExp = RegExp(pattern);
     if (value == null || value.isEmpty) {
-      return S.current.fieldNotEmpty;
+      return null;
     } else if (!regExp.hasMatch(value)) {
       return S.current.validMobile;
     }
@@ -104,6 +113,14 @@ class Validator {
 
   static DateFormat get dateFormat {
     return DateFormat('dd/MM/yyyy');
+  }
+
+  static DateFormat get shortTime {
+    return DateFormat('HH:mm:ss');
+  }
+
+  static DateFormat get titleTime {
+    return DateFormat('HH:mm');
   }
 
   static DateFormat get dateFormatNCore {
@@ -141,9 +158,10 @@ String gethhmmddMMydate(String date) {
   return DateFormat('HH:mm - dd/MM/y').format(dateTime);
 }
 
-String getddMMydate(String date) {
-  var dateTime = DateTime.parse(date);
-  return DateFormat('dd-MM-y').format(dateTime);
+String? getddMMydateFromMili(dynamic date) {
+  if (date == null) return null;
+  var dateTime = DateTime.fromMillisecondsSinceEpoch(date as int);
+  return DateFormat('dd/MM/yyyy').format(dateTime);
 }
 
 String currency(dynamic value, {String currency = ' đ'}) {
@@ -160,6 +178,12 @@ final currencyFormatter = NumberFormat('#,##0', 'vi');
 
 void makeCall(String phone) {
   launch('tel://$phone');
+}
+
+void launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  }
 }
 
 Color hexToColor(String code) {
@@ -200,8 +224,36 @@ extension StringExtension on String {
     }
   }
 
+  String revertNameFirst() {
+    if (isNotEmpty) {
+      var endWord = split(' ').last;
+      var lastStr = replaceAll(endWord, '');
+      var revertStr = endWord + ' ' + lastStr;
+      return revertStr.trim();
+    }
+    return this;
+  }
+
+  String nomalizerTiengViet() {
+    if (isNotEmpty) {
+      var tiengvietkhongdau = TiengViet.parse(this);
+      return tiengvietkhongdau;
+    }
+    return this;
+  }
+
   String withItemList() {
     return '\u2022 ${this}';
+  }
+
+  String revertSingleSpace() {
+    // Regex to replace multiple spaces with a single space
+    // Given that you also want to cover tabs, newlines, etc, just replace \s\s+ with ' ':
+    // var pattern = r'/\s\s+/g';
+    // var regExp = RegExp(pattern);
+
+    // var subString = replaceAll(RegExp(r'[^\w\s]+'), ' ');
+    return replaceAll(RegExp(' +'), ' ');
   }
 }
 
@@ -210,3 +262,12 @@ Random _rnd = Random();
 
 String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
     length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1)}' : '';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
+}

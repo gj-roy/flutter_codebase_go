@@ -29,6 +29,7 @@ class QuestionSinglechoiceField<T> extends FormBuilderField<T> {
   final bool? isRequired;
   final bool? isDetail;
   final bool? isSubQuestion;
+  final bool? isBorder;
   final String? textBoxName;
 
   /// Creates field to select one value from a list of Radio Widgets
@@ -67,6 +68,7 @@ class QuestionSinglechoiceField<T> extends FormBuilderField<T> {
       this.isRequired,
       this.isDetail,
       this.isSubQuestion,
+      this.isBorder = true,
       this.textBoxName})
       : super(
           key: key,
@@ -149,6 +151,7 @@ class QuestionSinglechoiceField<T> extends FormBuilderField<T> {
                   wrapTextDirection: wrapTextDirection,
                   wrapVerticalDirection: wrapVerticalDirection,
                   controlAffinity: controlAffinity,
+                  isBorder: isBorder,
                 ),
                 isDetail == true ? const SizedBox(height: 10) : Container(),
                 isDetail == true

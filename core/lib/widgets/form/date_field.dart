@@ -9,6 +9,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:core/generated_images.dart';
 import 'package:core/core.dart';
 import 'package:intl/intl.dart';
+
+import 'form_container.dart';
 // enum PickerType { material, cupertino }
 
 /// Field for `Date`, `Time` and `DateTime` input
@@ -160,7 +162,7 @@ class DateTimeField extends FormBuilderField<DateTime> {
 
             var hasFocus = state.effectiveFocusNode?.hasFocus ?? false;
             var hasError = state.hasError && (isRequired ?? false);
-            const dimension = 12.0;
+            const dimension = 8.0;
 
             return FormContainer(
               borderRadius: dimension,

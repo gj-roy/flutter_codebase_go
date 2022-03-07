@@ -27,6 +27,7 @@ class CheckBoxItemsView<T> extends StatefulWidget {
   final Widget? separator;
   final ControlAffinity controlAffinity;
   final bool? isBorder;
+  final bool? isShortAnwser;
   const CheckBoxItemsView({
     Key? key,
     required this.options,
@@ -51,6 +52,7 @@ class CheckBoxItemsView<T> extends StatefulWidget {
     this.separator,
     this.controlAffinity = ControlAffinity.leading,
     this.isBorder = true,
+    this.isShortAnwser = false,
   }) : super(key: key);
 
   @override
@@ -63,7 +65,6 @@ class _CheckBoxItemsViewState<T> extends State<CheckBoxItemsView<T>> {
   @override
   void initState() {
     super.initState();
-
     if (widget.value != null) {
       selectedListItems.addAll(widget.value!);
     }
@@ -71,6 +72,17 @@ class _CheckBoxItemsViewState<T> extends State<CheckBoxItemsView<T>> {
 
   @override
   Widget build(BuildContext context) {
+    // if (widget.value != null && widget.value!.isNotEmpty) {
+    //   List<T>? newArray = List.empty();
+    //   for (var i in widget.value!) {
+    //     if (!selectedListItems.contains(i)) {
+    //       newArray.add(i);
+    //     }
+    //   }
+    //   if (newArray.isNotEmpty) {
+    //     selectedListItems.addAll(newArray);
+    //   }
+    // }
     final widgetList = <Widget>[];
     for (var i = 0; i < widget.options.length; i++) {
       widgetList.add(item(i));
@@ -143,7 +155,7 @@ class _CheckBoxItemsViewState<T> extends State<CheckBoxItemsView<T>> {
               });
             },
       child: Container(
-        margin: const EdgeInsets.only(left: 0),
+        padding: const EdgeInsets.only(left: 0, top: 5, bottom: 5),
         child: option.child ??
             Text(option.value?.toString() ?? '',
                 textAlign: TextAlign.left,
@@ -151,20 +163,22 @@ class _CheckBoxItemsViewState<T> extends State<CheckBoxItemsView<T>> {
       ),
     );
 
+    var widthItem =
+        widget.isShortAnwser == true ? (size.width - 40) / 2 : size.width;
     return Container(
       margin: EdgeInsets.only(top: widget.wrapSpacing),
       padding: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
-      width: size.width,
+      width: widthItem,
       decoration: widget.isBorder == true
           ? BoxDecoration(
               border: Border.all(color: AppColors.borderControl, width: 1),
               borderRadius: BorderRadius.circular(10))
           : const BoxDecoration(),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           if (widget.controlAffinity == ControlAffinity.leading) control,
-          Flexible(flex: 1, child: label),
+          Expanded(flex: 1, child: label),
           if (widget.controlAffinity == ControlAffinity.trailing) control,
           if (widget.separator != null && index != widget.options.length - 1)
             widget.separator!,
